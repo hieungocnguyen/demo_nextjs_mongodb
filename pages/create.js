@@ -16,7 +16,7 @@ const Create = () => {
             `https://demo-nextjs-mongodb.vercel.app/api/posts`,
             { title: title, content: content }
          );
-         // router.push("/");
+         router.push("/");
       } catch (error) {
          console.log(error);
       }

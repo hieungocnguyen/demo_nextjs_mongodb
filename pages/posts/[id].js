@@ -7,10 +7,9 @@ const Post = ({ post }) => {
 
    const deletePost = async () => {
       const postID = router.query.id;
+      const baseURL = process.env.BASE_URL;
       try {
-         const deleted = await axios.delete(
-            `${process.env.BASE_URL}/api/posts/${postID}`
-         );
+         const deleted = await axios.delete(`${baseURL}/api/posts/${postID}`);
 
          router.push("/");
       } catch (error) {
@@ -33,7 +32,8 @@ const Post = ({ post }) => {
 };
 
 Post.getInitialProps = async ({ query: { id } }) => {
-   const res = await axios.get(`${process.env.BASE_URL}/api/posts/${id}`);
+   const baseURL = process.env.BASE_URL;
+   const res = await axios.get(`${baseURL}/api/posts/${id}`);
 
    return { post: res.data.data };
 };

@@ -32,6 +32,7 @@ export default function Home({ posts }) {
 }
 
 Home.getInitialProps = async () => {
-   const res = await axios.get(`${process.env.BASE_URL}/api/posts`);
+   const baseURL = await process.env.BASE_URL;
+   const res = await axios.get(`${baseURL}/api/posts`);
    return { posts: res.data.data };
 };

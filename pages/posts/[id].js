@@ -9,7 +9,7 @@ const Post = ({ post }) => {
       const postID = router.query.id;
       try {
          const deleted = await axios.delete(
-            `https://demo-nextjs-mongodb.vercel.app/api/posts/${postID}`
+            `http://0.0.0.0:3000/api/posts/${postID}`
          );
 
          router.push("/");

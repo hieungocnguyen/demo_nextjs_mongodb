@@ -8,7 +8,9 @@ const Post = ({ post }) => {
    const deletePost = async () => {
       const postID = router.query.id;
       try {
-         const deleted = await axios.delete(`/api/posts/${postID}`);
+         const deleted = await axios.delete(
+            `https://demo-nextjs-mongodb.vercel.app/api/posts/${postID}`
+         );
 
          router.push("/");
       } catch (error) {
@@ -31,7 +33,9 @@ const Post = ({ post }) => {
 };
 
 Post.getInitialProps = async ({ query: { id } }) => {
-   const res = await axios.get(`http://localhost:3000/api/posts/${id}`);
+   const res = await axios.get(
+      `https://demo-nextjs-mongodb.vercel.app/api/posts/${id}`
+   );
 
    return { post: res.data.data };
 };

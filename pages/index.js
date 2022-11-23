@@ -31,6 +31,8 @@ export default function Home({ posts }) {
 }
 
 Home.getInitialProps = async () => {
-   const res = await axios.get("http://localhost:3000/api/posts");
+   const res = await axios.get(
+      "https://demo-nextjs-mongodb.vercel.app/api/posts"
+   );
    return { posts: res.data.data };
 };

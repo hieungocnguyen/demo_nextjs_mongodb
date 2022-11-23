@@ -10,13 +10,16 @@ const Create = () => {
    const createPost = async (e) => {
       e.preventDefault();
       try {
-         const res = await axios.post("/api/posts", {
-            headers: {
-               Accept: "application/json",
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify(form),
-         });
+         const res = await axios.post(
+            "https://demo-nextjs-mongodb.vercel.app/api/posts",
+            {
+               headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+               },
+               body: JSON.stringify(form),
+            }
+         );
          router.push("/");
       } catch (error) {
          console.log(error);

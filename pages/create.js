@@ -15,12 +15,7 @@ const Create = () => {
          console.log(JSON.stringify(form));
          const res = await axios.post(
             `https://demo-nextjs-mongodb.vercel.app/api/posts`,
-            {
-               headers: {
-                  "Content-Type": "application/json",
-               },
-               body: JSON.stringify(form),
-            }
+            { title: title, content: content }
          );
          // router.push("/");
       } catch (error) {

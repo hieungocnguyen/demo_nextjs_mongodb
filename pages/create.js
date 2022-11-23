@@ -1,10 +1,12 @@
 import axios from "axios";
+import { set } from "mongoose";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "../styles/Create.module.css";
 
 const Create = () => {
-   const [form, setForm] = useState({ title: "", content: "" });
+   const [title, setTitle] = useState("");
+   const [content, setContent] = useState("");
    const router = useRouter();
 
    const createPost = async (e) => {
@@ -26,13 +28,6 @@ const Create = () => {
       }
    };
 
-   const handleChange = (e) => {
-      setForm({
-         ...form,
-         [e.target.name]: e.target.value,
-      });
-   };
-
    return (
       <form className={styles.form} onSubmit={createPost}>
          <div>
@@ -41,7 +36,9 @@ const Create = () => {
                type="text"
                id="title"
                name="title"
-               onChange={handleChange}
+               onChange={(e) => {
+                  setTitle(e.target.value);
+               }}
             />
          </div>
          <div>
@@ -52,7 +49,9 @@ const Create = () => {
                rows="10"
                cols="30"
                name="content"
-               onChange={handleChange}
+               onChange={(e) => {
+                  setContent(e.target.value);
+               }}
             ></textarea>
          </div>
          <button type="submit">Create</button>

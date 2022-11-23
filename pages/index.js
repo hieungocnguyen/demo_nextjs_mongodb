@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ posts }) {
+   // console.log(process.env.BASE_URL);
    return (
       <div className={styles.container}>
          <div className={styles.header}>
@@ -31,6 +32,6 @@ export default function Home({ posts }) {
 }
 
 Home.getInitialProps = async () => {
-   const res = await axios.get("http://0.0.0.0:3000/api/posts");
+   const res = await axios.get(`${process.env.BASE_URL}/api/posts`);
    return { posts: res.data.data };
 };

@@ -9,7 +9,7 @@ const Post = ({ post }) => {
       const postID = router.query.id;
       try {
          const deleted = await axios.delete(
-            `http://0.0.0.0:3000/api/posts/${postID}`
+            `${process.env.BASE_URL}/api/posts/${postID}`
          );
 
          router.push("/");
@@ -33,9 +33,7 @@ const Post = ({ post }) => {
 };
 
 Post.getInitialProps = async ({ query: { id } }) => {
-   const res = await axios.get(
-      `https://demo-nextjs-mongodb.vercel.app/api/posts/${id}`
-   );
+   const res = await axios.get(`${process.env.BASE_URL}/api/posts/${id}`);
 
    return { post: res.data.data };
 };

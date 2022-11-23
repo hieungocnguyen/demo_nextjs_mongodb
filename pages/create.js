@@ -10,7 +10,7 @@ const Create = () => {
    const createPost = async (e) => {
       e.preventDefault();
       try {
-         const res = await axios.post("http://0.0.0.0:3000/api/posts", {
+         const res = await axios.post(`${process.env.BASE_URL}/api/posts`, {
             headers: {
                Accept: "application/json",
                "Content-Type": "application/json",

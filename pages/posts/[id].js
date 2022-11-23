@@ -1,3 +1,4 @@
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../../styles/Post.module.css";
@@ -7,12 +8,7 @@ const Post = ({ post }) => {
    const deletePost = async () => {
       const postID = router.query.id;
       try {
-         const deleted = await fetch(
-            `http://localhost:3000/api/posts/${postID}`,
-            {
-               method: "Delete",
-            }
-         );
+         const deleted = await axios.delete(`/api/posts/${postID}`);
 
          router.push("/");
       } catch (error) {
@@ -35,10 +31,9 @@ const Post = ({ post }) => {
 };
 
 Post.getInitialProps = async ({ query: { id } }) => {
-   const res = await fetch(`http://localhost:3000/api/posts/${id}`);
-   const { data } = await res.json();
+   const res = await axios.get(`http://localhost:3000/api/posts/${id}`);
 
-   return { post: data };
+   return { post: res.data.data };
 };
 
 export default Post;

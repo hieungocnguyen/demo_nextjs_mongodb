@@ -1,3 +1,4 @@
+import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,8 +31,6 @@ export default function Home({ posts }) {
 }
 
 Home.getInitialProps = async () => {
-   const res = await fetch("http://localhost:3000/api/posts");
-   const { data } = await res.json();
-
-   return { posts: data };
+   const res = await axios.get("http://localhost:3000/api/posts");
+   return { posts: res.data.data };
 };

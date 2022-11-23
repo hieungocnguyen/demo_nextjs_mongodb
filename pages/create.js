@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "../styles/Create.module.css";
@@ -9,8 +10,7 @@ const Create = () => {
    const createPost = async (e) => {
       e.preventDefault();
       try {
-         const res = await fetch("http://localhost:3000/api/posts", {
-            method: "POST",
+         const res = await axios.post("/api/posts", {
             headers: {
                Accept: "application/json",
                "Content-Type": "application/json",

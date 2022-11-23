@@ -5,7 +5,6 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ posts }) {
-   // console.log(process.env.BASE_URL);
    return (
       <div className={styles.container}>
          <div className={styles.header}>
@@ -32,7 +31,8 @@ export default function Home({ posts }) {
 }
 
 Home.getInitialProps = async () => {
-   const baseURL = await process.env.BASE_URL;
-   const res = await axios.get(`${baseURL}/api/posts`);
+   const res = await axios.get(
+      `https://demo-nextjs-mongodb.vercel.app/api/posts`
+   );
    return { posts: res.data.data };
 };

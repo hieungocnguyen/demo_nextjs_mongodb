@@ -10,6 +10,7 @@ const Create = () => {
    const createPost = async (e) => {
       e.preventDefault();
       try {
+         console.log(JSON.stringify(form));
          const res = await axios.post(
             `https://demo-nextjs-mongodb.vercel.app/api/posts`,
             {
@@ -19,7 +20,7 @@ const Create = () => {
                body: JSON.stringify(form),
             }
          );
-         router.push("/");
+         // router.push("/");
       } catch (error) {
          console.log(error);
       }
